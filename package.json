@@ -1,0 +1,30 @@
+{
+  "name": "boostnoteexporter",
+  "version": "1.0.0",
+  "description": "Export Boostnote notes to PDF, HTML and Markdown",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iursevla/BoostnoteExporter.git"
+  },
+  "keywords": [
+    "boostnote",
+    "pdf",
+    "html",
+    "markdown",
+    "export"
+  ],
+  "author": "Rui Alves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iursevla/BoostnoteExporter/issues"
+  },
+  "homepage": "https://github.com/iursevla/BoostnoteExporter#readme",
+  "dependencies": {
+    "highlightjs": "^9.10.0",
+    "remarkable": "^1.7.1"
+  }
+}
