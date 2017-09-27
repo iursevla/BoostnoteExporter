@@ -25,6 +25,7 @@
   "homepage": "https://github.com/iursevla/BoostnoteExporter#readme",
   "dependencies": {
     "highlightjs": "^9.10.0",
+    "phantom": "^4.0.5",
     "remarkable": "^1.7.1"
   }
 }

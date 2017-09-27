@@ -1,5 +1,7 @@
+const fs = require('fs');
 const Remarkable = require('remarkable'); //https://github.com/jonschlinkert/remarkable
 const hljs = require('highlightjs'); //https://www.npmjs.com/package/highlightjs
+
 
 /**
  * Simple static class that extends the Remarkable API and adds the highligh method.
@@ -8,7 +10,7 @@ const hljs = require('highlightjs'); //https://www.npmjs.com/package/highlightjs
  */
 class MarkdownToHTML extends Remarkable {
 
-    constructor(markdown) {
+    constructor() {
         super({ highlight: MarkdownToHTML.highlight });
     }
 
@@ -21,6 +23,7 @@ class MarkdownToHTML extends Remarkable {
      * @memberof MarkdownToHTML
      */
     static highlight(str, lang) {
+        // console.log(str, lang);
         if (lang && hljs.getLanguage(lang)) {
             try {
                 // console.log(hljs.highlight(lang, str).value);
@@ -33,12 +36,14 @@ class MarkdownToHTML extends Remarkable {
         return ''
     }
 }
-let markdown = `
+
+/* let markdownCode = `
 # Remarkable rulezz!
 \`\`\`js
 let x = 33;
 \`\`\`
-`;
+`; */
+let markdownCode = fs.readFileSync('D:\\BoostNote Folder\\dist\\Test 1\\Boostnote is amazing.md', 'utf8');
 
-let md = new MarkdownToHTML(markdown);
-console.log(md.render(markdown));
+let md = new MarkdownToHTML();
+console.log(md.render(markdownCode));
