@@ -26,6 +26,7 @@
   "dependencies": {
     "highlightjs": "^9.10.0",
     "phantom": "^4.0.5",
+    "phantomjs-prebuilt": "^2.1.15",
     "remarkable": "^1.7.1"
   }
 }
