@@ -17,17 +17,28 @@ class CLI {
 
     //Problem with images otherwise works great
     async renderPDF(htmlCode) {
+        let cssPath = `<link rel="stylesheet" type="text/css" href="../css/highlight.css">\n`
+        htmlCode = cssPath + htmlCode;
+        console.log(htmlCode);
+
         const phantomInstance = await phantom.create();
 
         const page = await phantomInstance.createPage();
         await page.property('viewportSize', { width: 1024, height: 600 });
-        page.setContent(htmlCode, '');
+        await page.setContent(htmlCode, '');
+        /*  await page.evaluate(function (cssPaths) {
+             let head = document.querySelector('head');
+         }) */
+
+        await page.evaluate(function () {
+            var style = document.createElement('style'),
+                text = document.createTextNode(' .hljs-keyword{color:blue}');
+            style.setAttribute('type', 'text/css');
+            style.appendChild(text);
+            document.head.appendChild(style);
+        });
 
         //Verify if htmlCode contains images
-
-        /*     await page.render('stackoverflow.pdf')
-            console.log(`File created at [./stackoverflow.html]`);
-            await phantomInstance.exit(); */
         let numImgs = this._numImagesInHtmlCode(htmlCode);
         if (numImgs === 0) {
             console.log("0 images");
